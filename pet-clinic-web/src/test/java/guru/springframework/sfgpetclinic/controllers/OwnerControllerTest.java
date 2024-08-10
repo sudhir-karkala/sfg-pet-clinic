@@ -15,6 +15,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import static org.hamcrest.Matchers.hasSize;
+import static org.mockito.Mockito.verifyNoInteractions;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -63,5 +64,6 @@ class OwnerControllerTest {
         mockMvc.perform(get("/owners/find"))
                 .andExpect(view().name("notimplemented"))
                 .andExpect(status().isOk());
+        verifyNoInteractions(ownerService);
     }
 }
